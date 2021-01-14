@@ -12,12 +12,13 @@ public class mytest2 {
         if (1==1){
             try
             {
-                Thread.sleep(1000);
+                Thread.sleep(30000);
             }
             catch(InterruptedException e)
             {
                 // this part is executed when an exception (in this example InterruptedException) occurs
             }
+            Assert.fail("fail message");
 
         }
         else {
