@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_chubatovagradletests" default="compile.module.chubatovagradletests">
+  <dirname property="module.chubatovagradletests.basedir" file="${ant.file.module_chubatovagradletests}"/>
+  
+  <property name="module.jdk.home.chubatovagradletests" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.chubatovagradletests" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.chubatovagradletests" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.chubatovagradletests" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
+  
+  <property name="chubatovagradletests.output.dir" value="${module.chubatovagradletests.basedir}/../../out/production/ChubatovaGradleTests"/>
+  <property name="chubatovagradletests.testoutput.dir" value="${module.chubatovagradletests.basedir}/../../out/test/ChubatovaGradleTests"/>
+  
+  <path id="chubatovagradletests.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="chubatovagradletests.module.production.classpath">
+    <path refid="${module.jdk.classpath.chubatovagradletests}"/>
+  </path>
+  
+  <path id="chubatovagradletests.runtime.production.module.classpath">
+    <pathelement location="${chubatovagradletests.output.dir}"/>
+  </path>
+  
+  <path id="chubatovagradletests.module.classpath">
+    <path refid="${module.jdk.classpath.chubatovagradletests}"/>
+    <pathelement location="${chubatovagradletests.output.dir}"/>
+  </path>
+  
+  <path id="chubatovagradletests.runtime.module.classpath">
+    <pathelement location="${chubatovagradletests.testoutput.dir}"/>
+    <pathelement location="${chubatovagradletests.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.chubatovagradletests">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.chubatovagradletests">
+    <patternset refid="excluded.from.module.chubatovagradletests"/>
+  </patternset>
+  
+  
+  <target name="compile.module.chubatovagradletests" depends="compile.module.chubatovagradletests.production,compile.module.chubatovagradletests.tests" description="Compile module ChubatovaGradleTests"/>
+  
+  <target name="compile.module.chubatovagradletests.production" depends="register.custom.compilers" description="Compile module ChubatovaGradleTests; production classes"/>
+  
+  <target name="compile.module.chubatovagradletests.tests" depends="register.custom.compilers,compile.module.chubatovagradletests.production" description="compile module ChubatovaGradleTests; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.chubatovagradletests" description="cleanup module">
+    <delete dir="${chubatovagradletests.output.dir}"/>
+    <delete dir="${chubatovagradletests.testoutput.dir}"/>
+  </target>
+</project>
