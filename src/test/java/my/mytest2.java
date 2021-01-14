@@ -5,30 +5,30 @@ import org.junit.Assert;
 import org.junit.Test;
 import java.lang.Thread;
 
-public class mytest {
+public class mytest2 {
 
     @Test
-    public void foo1() {
+    public void foo2() {
         if (1==1){
-            try 
+            try
             {
                 Thread.sleep(10000);
-            } 
+            }
             catch(InterruptedException e)
             {
-            // this part is executed when an exception (in this example InterruptedException) occurs
+                // this part is executed when an exception (in this example InterruptedException) occurs
             }
 
         }
         else {
             System.out.println(System.currentTimeMillis());
-            try 
+            try
             {
                 Thread.sleep(40000);
-            } 
+            }
             catch(InterruptedException e)
             {
-            // this part is executed when an exception (in this example InterruptedException) occurs
+                // this part is executed when an exception (in this example InterruptedException) occurs
             }
             Assert.fail("fail message");
         };
@@ -37,3 +37,4 @@ public class mytest {
 
 
 }
+
