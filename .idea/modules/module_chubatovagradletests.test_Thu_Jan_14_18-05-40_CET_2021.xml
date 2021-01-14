@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_chubatovagradletests.test" default="compile.module.chubatovagradletests.test">
+  <dirname property="module.chubatovagradletests.test.basedir" file="${ant.file.module_chubatovagradletests.test}"/>
+  
+  <property name="module.jdk.home.chubatovagradletests.test" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.chubatovagradletests.test" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.chubatovagradletests.test" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.chubatovagradletests.test" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
+  
+  <property name="chubatovagradletests.test.output.dir" value="undefined"/>
+  <property name="chubatovagradletests.test.testoutput.dir" value="${module.chubatovagradletests.test.basedir}/../../build/classes/java/test"/>
+  
+  <path id="chubatovagradletests.test.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="chubatovagradletests.test.module.production.classpath">
+    <path refid="${module.jdk.classpath.chubatovagradletests.test}"/>
+    <pathelement location="${chubatovagradletests.main.output.dir}"/>
+    <path refid="library.gradle:_junit:junit:4.13.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+  </path>
+  
+  <path id="chubatovagradletests.test.runtime.production.module.classpath">
+    <path refid="chubatovagradletests.main.runtime.production.module.classpath"/>
+    <path refid="library.gradle:_junit:junit:4.13.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+  </path>
+  
+  <path id="chubatovagradletests.test.module.classpath">
+    <path refid="${module.jdk.classpath.chubatovagradletests.test}"/>
+    <pathelement location="${chubatovagradletests.main.output.dir}"/>
+    <path refid="library.gradle:_junit:junit:4.13.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+  </path>
+  
+  <path id="chubatovagradletests.test.runtime.module.classpath">
+    <pathelement location="${chubatovagradletests.test.testoutput.dir}"/>
+    <path refid="chubatovagradletests.main.runtime.module.classpath"/>
+    <path refid="library.gradle:_junit:junit:4.13.classpath"/>
+    <path refid="library.gradle:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.chubatovagradletests.test">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.chubatovagradletests.test">
+    <patternset refid="excluded.from.module.chubatovagradletests.test"/>
+  </patternset>
+  
+  <path id="chubatovagradletests.test.module.test.sourcepath">
+    <dirset dir="${module.chubatovagradletests.test.basedir}/../../src/test">
+      <include name="java"/>
+      <include name="resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.chubatovagradletests.test" depends="compile.module.chubatovagradletests.test.production,compile.module.chubatovagradletests.test.tests" description="Compile module ChubatovaGradleTests.test"/>
+  
+  <target name="compile.module.chubatovagradletests.test.production" depends="register.custom.compilers,compile.module.chubatovagradletests.main" description="Compile module ChubatovaGradleTests.test; production classes"/>
+  
+  <target name="compile.module.chubatovagradletests.test.tests" depends="register.custom.compilers,compile.module.chubatovagradletests.test.production" description="compile module ChubatovaGradleTests.test; test classes" unless="skip.tests">
+    <mkdir dir="${chubatovagradletests.test.testoutput.dir}"/>
+    <javac2 destdir="${chubatovagradletests.test.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.chubatovagradletests.test}/javac">
+      <compilerarg line="${compiler.args.chubatovagradletests.test}"/>
+      <bootclasspath refid="chubatovagradletests.test.module.bootclasspath"/>
+      <classpath refid="chubatovagradletests.test.module.classpath"/>
+      <src refid="chubatovagradletests.test.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.chubatovagradletests.test"/>
+    </javac2>
+    
+    <copy todir="${chubatovagradletests.test.testoutput.dir}">
+      <fileset dir="${module.chubatovagradletests.test.basedir}/../../src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.chubatovagradletests.test.basedir}/../../src/test/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.chubatovagradletests.test" description="cleanup module">
+    <delete dir="${chubatovagradletests.test.output.dir}"/>
+    <delete dir="${chubatovagradletests.test.testoutput.dir}"/>
+  </target>
+</project>
