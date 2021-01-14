@@ -9,31 +9,31 @@ public class mytest {
 
     @Test
     public void foo1() {
-        Thread.sleep(40000);
-        if (System.currentTimeMillis()%3==1){
+        if (1==1){
+            try 
+            {
+                Thread.sleep(120000);
+            } 
+            catch(InterruptedException e)
+            {
+            // this part is executed when an exception (in this example InterruptedException) occurs
+            }
+
         }
         else {
+            System.out.println(System.currentTimeMillis());
+            try 
+            {
+                Thread.sleep(40000);
+            } 
+            catch(InterruptedException e)
+            {
+            // this part is executed when an exception (in this example InterruptedException) occurs
+            }
             Assert.fail("fail message");
         };
 
     };
-    @Test
-    public void foo2() {
-        if (System.currentTimeMillis()%3==1){
-        }
-        else {
-            Assert.fail("fail message");
-        };
 
-    };
-    @Test
-    public void foo3() {
-        if (System.currentTimeMillis()%3==1){
-        }
-        else {
-            Assert.fail("fail message");
-        };
-
-    };
 
 }
