@@ -18,7 +18,7 @@ public class mytest {
             {
             // this part is executed when an exception (in this example InterruptedException) occurs
             }
-            //Assert.fail("fail message");
+
         }
         else {
             System.out.println(System.currentTimeMillis());
@@ -30,7 +30,7 @@ public class mytest {
             {
             // this part is executed when an exception (in this example InterruptedException) occurs
             }
-            //Assert.fail("fail message");
+
         };
 
     };
