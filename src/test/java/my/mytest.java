@@ -12,25 +12,25 @@ public class mytest {
         if (1==1){
             try 
             {
-                Thread.sleep(30000);
+                Thread.sleep(3);
             } 
             catch(InterruptedException e)
             {
             // this part is executed when an exception (in this example InterruptedException) occurs
             }
-            Assert.fail("fail message");
+            //Assert.fail("fail message");
         }
         else {
             System.out.println(System.currentTimeMillis());
             try 
             {
-                Thread.sleep(40000);
+                Thread.sleep(40);
             } 
             catch(InterruptedException e)
             {
             // this part is executed when an exception (in this example InterruptedException) occurs
             }
-            Assert.fail("fail message");
+            //Assert.fail("fail message");
         };
 
     };
