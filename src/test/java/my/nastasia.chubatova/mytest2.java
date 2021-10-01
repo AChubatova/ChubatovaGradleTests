@@ -5,14 +5,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import java.lang.Thread;
 
-public class mytest {
+public class mytest2 {
 
     @Test
     public void foo1() {
         if (1==1){
             try
             {
-                Thread.sleep(30000);
+                Thread.sleep(3);
             }
             catch(InterruptedException e)
             {
@@ -24,7 +24,7 @@ public class mytest {
             System.out.println(System.currentTimeMillis());
             try
             {
-                Thread.sleep(40000);
+                Thread.sleep(4);
             }
             catch(InterruptedException e)
             {
