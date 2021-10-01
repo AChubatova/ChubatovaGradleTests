@@ -6,7 +6,7 @@ import my.mytest2;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-@RunWith(Suite.class2)
+@RunWith(Suite.class)
 
 @Suite.SuiteClasses({
         mytest.class,
